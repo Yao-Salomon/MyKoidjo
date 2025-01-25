@@ -1,0 +1,623 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel = "preconnect" href = "https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Mykoidjo</title>
+
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+    <!-- Header -->
+    <header class="flex justify-between items-center p-3 bg-gray-100 shadow-md fixed top-0 left-0 w-full z-50">
+        <!-- Logo -->
+        <a href="#" class="flex items-center space-x-2">
+            <img src="{% static 'images/cash-money-icon-free-png.webp' %}" alt="Logo" class="w-12 h-12 rounded-full shadow-md">
+            <span class="text-xl font-bold text-blue-600">My</span><span class="text-xl font-bold">Koidjo</span>
+        </a>
+    
+        <!-- Menu Hamburger (visible sur mobile) -->
+        <div id="menuToggle" class="md:hidden flex flex-col space-y-1 cursor-pointer">
+            <span class="block w-8 h-1 bg-gray-700"></span>
+            <span class="block w-8 h-1 bg-gray-700"></span>
+            <span class="block w-8 h-1 bg-gray-700"></span>
+        </div>
+    
+        <!-- Navigation Links -->
+        <ul id="menu" class="hidden md:flex flex-col md:flex-row md:space-x-6 text-lg font-medium bg-gray-100 md:bg-transparent absolute md:static top-16 md:top-0 left-0 w-full md:w-auto shadow-lg md:shadow-none p-4 md:p-0">
+            <li><a href="#banniere" class="hover:text-blue-500 block md:inline">Accueil</a></li>
+            <li><a href="#menu" class="hover:text-blue-500 block md:inline">Transaction</a></li>
+            <li><a href="#expert" class="hover:text-blue-500 block md:inline">Services</a></li>
+            <li><a href="#temoignage" class="hover:text-blue-500 block md:inline">Témoignages</a></li>
+            <li><a href="#contact" class="hover:text-blue-500 block md:inline">Contact</a></li>
+        </ul>
+    </header>
+    {% if success %}
+    <div id="success-message" class="flex items-center justify-center min-h-screen bg-gray-100">
+        <div class="p-6 bg-white rounded-2xl shadow-lg max-w-md">
+          <div class="flex items-center justify-center bg-green-100 rounded-full w-14 h-14 mx-auto">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-8 h-8 text-green-600"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </div>
+          <h2 class="mt-4 text-2xl font-semibold text-center text-gray-800">Succès!</h2>
+          <p class="mt-2 text-center text-gray-600">
+            Votre message a été envoyé avec succès! Nous vous remercions.
+          </p>
+          <div class="mt-6 text-center">
+            <button
+                onclick="hideSuccessMessage()"
+                class="px-6 py-2 text-sm font-medium text-white bg-green-600 rounded-lg hover:bg-green-500"
+            >
+                Page d'Accueil
+            </button>
+          </div>
+        </div>
+    </div>
+    <div id="page" class="hidden">
+    
+        <!-- JavaScript pour le menu hamburger -->
+        <script>
+            const menuToggle = document.getElementById('menuToggle');
+            const menu = document.getElementById('menu');
+    
+            menuToggle.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+            
+        </script>
+        <section id="banniere" 
+        class="relative bg-gray-200 py-20 text-center bg-[url('{% static 'images/JD-Mag-TV-Cote-dIvoire-INP-HB-Sortie-officielle-de-la-tenue-dApparat.jpg' %}')] bg-cover bg-center min-h-screen flex items-center justify-center">
+    <!-- Superposition d'une couleur sombre avec une opacité réduite pour améliorer la visibilité de l'image -->
+    <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+    
+    <!-- Contenu -->
+    <div class="max-w-3xl mx-auto relative z-10 px-4 text-center">
+       <!-- Titre -->
+       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 drop-shadow-lg">
+           Plus de 200 polytechs nous ont choisi
+       </h2>
+       
+       <!-- Paragraphe -->
+       <p class="text-base sm:text-lg lg:text-xl text-white mb-6 drop-shadow-lg">
+           Votre solution de transfert rapide et efficace.
+       </p>
+       
+       <!-- Boutons -->
+       <div class="flex flex-col md:flex-row justify-center gap-4">
+           <a href="#" 
+              class="px-6 py-3 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition">
+               Rapidité
+           </a>
+           <a href="#" 
+              class="px-6 py-3 bg-green-500 text-white rounded-lg shadow-md hover:bg-green-600 transition">
+               Efficacité
+           </a>
+       </div>
+    </div>
+    </section>
+        
+    <section id="menu" class="py-16 bg-white">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-gray-800"><span class="text-blue-500">T</span>ransaction</h2>
+            <p class="text-gray-600 mt-2">Envie de transférer votre koidjo sur mobile money ?</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto space-y-6 md:space-y-0">
+            <!-- Carte TREMO-WAVE -->
+            <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 hover:shadow-2xl transition duration-300">
+                <img src="{% static 'images/WAVE22.jpg' %}" alt="TREMO-WAVE" class="w-full h-48 object-cover">
+                <div class="p-6 text-center">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">TREMO-WAVE</h3>
+                    <a href="https://wa.me/2250584030600?text=Bonjour,%20je%20souhaite%20faire%20une%20transaction%20tremo%20vers%20wave" 
+                       target="_blank" 
+                       class="inline-block w-16 h-16 bg-green-500 rounded-full shadow-lg hover:bg-green-600 transition duration-300"
+                       aria-label="Envoyer un message WhatsApp pour TREMO-WAVE">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-full h-full p-3">
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Carte TREMO-OM -->
+            <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 hover:shadow-2xl transition duration-300">
+                <img src="{% static 'images/orange-money.jpg' %}" alt="TREMO-OM" class="w-full h-48 object-cover">
+                <div class="p-6 text-center">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">TREMO-OM</h3>
+                    <a href="https://wa.me/2250584030600?text=Bonjour%2C%20je%20souhaite%20faire%20une%20transaction%20tremo%20vers%20OM" 
+                       target="_blank" 
+                       class="inline-block w-16 h-16 bg-green-500 rounded-full shadow-lg hover:bg-green-600 transition duration-300">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-full h-full p-3">
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Carte TREMO-MTN -->
+            <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 hover:shadow-2xl transition duration-300">
+                <img src="{% static 'images/5-2.png' %}" alt="TREMO-MTN" class="w-full h-48 object-cover">
+                <div class="p-6 text-center">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">TREMO-MTN</h3>
+                    <a href="https://wa.me/2250584030600?text=Bonjour,%20je%20souhaite%20faire%20une%20transaction%20tremo%20vers%20MTN" 
+                       target="_blank" 
+                       class="inline-block w-16 h-16 bg-green-500 rounded-full shadow-lg hover:bg-green-600 transition duration-300">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-full h-full p-3">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="expert" class="py-12 bg-gray-200">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold">
+                <span class="text-blue-600">Autres</span> Services
+            </h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
+            <!-- Box 1 -->
+            <article class="bg-white rounded-lg shadow-md overflow-hidden hover-effect">
+                <img src="{% static 'images/tresormoney_1.png' %}" alt="Service de pré-inscription pour les concours" class="w-full h-48 object-cover">
+                <div class="p-4 text-center">
+                    <h3 class="text-lg font-semibold">Pré-inscription tremo</h3>
+                    <h3 class="text-sm text-gray-600">Frais de concours</h3>
+                    <a href="https://wa.me/2250584030600?text=Bonjour,%20je%20souhaite%20faire%20ma%20préinscription%20en%20ligne" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="inline-block mt-4 bg-green-500 text-white px-4 py-2 rounded-full shadow hover:bg-green-600 transition">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-6 h-6 inline mr-2">
+                        Contactez-nous 
+                    </a>
+                </div>
+            </article>
+    
+            <!-- Box 2 -->
+            <article class="bg-white rounded-lg shadow-md overflow-hidden hover-effect">
+                <img src="{% static 'images/1222572-page-de-destination-pour-economiser-de-l-argent-vectoriel.jpg' %}" alt="Investissement" class="w-full h-48 object-cover">
+                <div class="p-4 text-center">
+                    <h3 class="text-lg font-semibold">Investissement</h3>
+                    <a href="https://wa.me/2250584030600?text=Bonjour,%20je%20souhaite%20avoir%20des%20informations%20sur%20les%20investissements" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="inline-block mt-4 bg-green-500 text-white px-4 py-2 rounded-full shadow hover:bg-green-600 transition">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-6 h-6 inline mr-2">
+                        Contactez-nous 
+                    </a>
+                </div>
+            </article>
+    
+            <!-- Box 3 -->
+            <article class="bg-white rounded-lg shadow-md overflow-hidden hover-effect">
+                <img src="{% static 'images/S833dae0de538402da5f965f45aefc262f.jpg_640x640Q90.jpg_.webp' %}" alt="Location de vidéo-projecteur" class="w-full h-48 object-cover">
+                <div class="p-4 text-center">
+                    <h3 class="text-lg font-semibold">Location de vidéo-projecteur</h3>
+                    <a href="https://wa.me/2250584030600?text=Bonjour,%20je%20souhaite%20réserver%20un%20projecteur%20Smart" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="inline-block mt-4 bg-green-500 text-white px-4 py-2 rounded-full shadow hover:bg-green-600 transition">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-6 h-6 inline mr-2">
+                        Contactez-nous 
+                    </a>
+                </div>
+            </article>
+    
+            <!-- Box 4 -->
+            <article class="bg-white rounded-lg shadow-md overflow-hidden hover-effect">
+                <img src="{% static 'images/femme-conferenciere-se-produisant-scene-s-adressant-grand-public-professionnel-evenement_285885-5200.jpg' %}" alt="Conseil en Prise de parole" class="w-full h-48 object-cover">
+                <div class="p-4 text-center">
+                    <h3 class="text-lg font-semibold">Conseil en Prise de parole</h3>
+                    <a href="https://wa.me/2250584030600?text=Bonjour,%20je%20souhaite%20bénéficier%20de%20vos%20conseils%20en%20prise%20de%20parole" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="inline-block mt-4 bg-green-500 text-white px-4 py-2 rounded-full shadow hover:bg-green-600 transition">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-6 h-6 inline mr-2">
+                        Contactez-nous 
+                    </a>
+                </div>
+            </article>
+        </div>
+    </section>
+    
+    <!-- Section Témoignages -->
+    <section id="temoignage" class="py-12 bg-gray-100" class="pt-24">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold">Que Disent Nos <span class="text-blue-600">Clients</span></h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+            <!-- Témoignage 1 -->
+            <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                <img src="{% static 'images/6997662.png' %}" alt="" class="w-16 h-16 mx-auto rounded-full mb-4">
+                <p class="text-gray-600">Excellent service de retrait, très rapide et très convivial.</p>
+                <h3 class="mt-4 text-lg font-semibold">Murielle Abou</h3>
+            </div>
+    
+            <!-- Témoignage 2 -->
+            <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                <img src="{% static 'images/4139981.png' %}" alt="" class="w-16 h-16 mx-auto rounded-full mb-4">
+                <p class="text-gray-600">J'ai été satisfaite. J'apprécie votre disponibilité et votre polyvalence.</p>
+                <h3 class="mt-4 text-lg font-semibold">Moro Bitty</h3>
+            </div>
+    
+            <!-- Témoignage 3 -->
+            <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                <img src="{% static 'images/4323015.png' %}" alt="" class="w-16 h-16 mx-auto rounded-full mb-4">
+                <p class="text-gray-600">Bon, je dirais que c'est de la bonne qualité et c'est durable.</p>
+                <h3 class="mt-4 text-lg font-semibold">Othniel Jonam</h3>
+            </div>
+        </div>
+    </section>
+    
+     <section class="contact py-16 bg-white" id="contact" class="pt-24">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4"><span class="text-indigo-500">C</span>ontact</h2>
+                <p class="text-gray-600">N'hésitez pas à nous envoyer un message pour toute demande ou information.</p>
+            </div>
+            <form action="https://formspree.io/f/xzzzynjd" method="POST" class="bg-gray-100 shadow-md rounded-lg p-8 mt-8 max-w-xl mx-auto">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-2">
+                    Envoyer un message
+                </h3>
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700 font-medium mb-2">Nom</label>
+                    <input type="text" name="name" id="name" placeholder="Nom" class="w-full p-3 focus:outline-none" required>
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Email" class="w-full p-3 focus:outline-none" required>
+                </div>
+                <div class="mb-4">
+                    <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                    <textarea name="message" id="message" placeholder="Message" class="w-full p-3 focus:outline-none" required></textarea>
+                </div>
+                <button type="submit" class="bg-indigo-500 text-white font-medium py-3 px-6 rounded-lg hover:bg-indigo-600">
+                    Envoyer
+                </button>
+            </form>
+            <form action="/" method="POST" class="bg-gray-100 shadow-md rounded-lg p-8 mt-8 max-w-xl mx-auto">
+                {% csrf_token %}
+                <h3 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-2">
+                    Envoyer un message
+                </h3>
+                {% for field in form %}
+                    <div class="mb-4">
+                        <label for="{{field.auto_id}}" class="block text-gray-700 font-medium mb-2">{{ field.label }}</label>
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                <button type="submit" class="bg-indigo-500 text-white font-medium py-3 px-6 rounded-lg hover:bg-indigo-600">
+                    Envoyer
+                </button>
+            </form>
+        </div>
+    </section>
+    <footer style="background-color:#f1f1f1; text-align:center; padding:20px; position:relative; bottom:0; width:100%;"> 
+        <div style="display:flex; justify-content:center; gap:20px; align-items:center;">
+          
+         <!-- Icône WhatsApp homogène -->
+        <a href="https://wa.me/2250584030600" target="_blank" title="WhatsApp">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:40px; height:40px; border-radius:50%; background-color:#25D366;">
+          </a>
+          <!-- Icône Facebook -->
+          <a href="https://www.facebook.com/share/18R41KR4Mk/" target="_blank" title="Facebook">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" style="width:40px; height:40px;">
+          </a>
+      
+          <!-- Icône LinkedIn -->
+          <a href="https://www.linkedin.com/in/mariam-cisse-289308262?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" title="LinkedIn">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn" style="width:40px; height:40px;">
+          </a>
+        
+        </div>
+        
+        <div class="copyright">
+          <p style="margin-top:10px; font-size:14px; color:#555;">© 2024 <a href="#">MyKoidjo</a> Mariam CISSE. Tous droits réservés.</p>
+        </div>
+      </footer>
+       </div>
+    {% else %}
+    <div id="success-message" class="flex items-center justify-center min-h-screen bg-gray-100 hidden">
+        <div class="p-6 bg-white rounded-2xl shadow-lg max-w-md">
+          <div class="flex items-center justify-center bg-green-100 rounded-full w-14 h-14 mx-auto">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-8 h-8 text-green-600"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </div>
+          <h2 class="mt-4 text-2xl font-semibold text-center text-gray-800">Success!</h2>
+          <p class="mt-2 text-center text-gray-600">
+            Your form has been submitted successfully. Thank you!
+          </p>
+          <div class="mt-6 text-center">
+            <button
+                onclick="hideSuccessMessage()"
+                class="px-6 py-2 text-sm font-medium text-white bg-green-600 rounded-lg hover:bg-green-500"
+            >
+                Go to Homepage
+            </button>
+          </div>
+        </div>
+    </div>
+    <div id="page">
+
+        <!-- JavaScript pour le menu hamburger -->
+        <script>
+            const menuToggle = document.getElementById('menuToggle');
+            const menu = document.getElementById('menu');
+    
+            menuToggle.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+            
+        </script>
+        <section id="banniere" 
+        class="relative bg-gray-200 py-20 text-center bg-[url('{% static 'images/JD-Mag-TV-Cote-dIvoire-INP-HB-Sortie-officielle-de-la-tenue-dApparat.jpg' %}')] bg-cover bg-center min-h-screen flex items-center justify-center">
+    <!-- Superposition d'une couleur sombre avec une opacité réduite pour améliorer la visibilité de l'image -->
+    <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+    
+    <!-- Contenu -->
+    <div class="max-w-3xl mx-auto relative z-10 px-4 text-center">
+       <!-- Titre -->
+       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 drop-shadow-lg">
+           Plus de 200 polytechs nous ont choisi
+       </h2>
+       
+       <!-- Paragraphe -->
+       <p class="text-base sm:text-lg lg:text-xl text-white mb-6 drop-shadow-lg">
+           Votre solution de transfert rapide et efficace.
+       </p>
+       
+       <!-- Boutons -->
+       <div class="flex flex-col md:flex-row justify-center gap-4">
+           <a href="#" 
+              class="px-6 py-3 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition">
+               Rapidité
+           </a>
+           <a href="#" 
+              class="px-6 py-3 bg-green-500 text-white rounded-lg shadow-md hover:bg-green-600 transition">
+               Efficacité
+           </a>
+       </div>
+    </div>
+    </section>
+        
+    <section id="menu" class="py-16 bg-white">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-gray-800"><span class="text-blue-500">T</span>ransaction</h2>
+            <p class="text-gray-600 mt-2">Envie de transférer votre koidjo sur mobile money ?</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto space-y-6 md:space-y-0">
+            <!-- Carte TREMO-WAVE -->
+            <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 hover:shadow-2xl transition duration-300">
+                <img src="{% static 'images/WAVE22.jpg' %}" alt="TREMO-WAVE" class="w-full h-48 object-cover">
+                <div class="p-6 text-center">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">TREMO-WAVE</h3>
+                    <a href="https://wa.me/2250584030600?text=Bonjour,%20je%20souhaite%20faire%20une%20transaction%20tremo%20vers%20wave" 
+                       target="_blank" 
+                       class="inline-block w-16 h-16 bg-green-500 rounded-full shadow-lg hover:bg-green-600 transition duration-300"
+                       aria-label="Envoyer un message WhatsApp pour TREMO-WAVE">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-full h-full p-3">
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Carte TREMO-OM -->
+            <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 hover:shadow-2xl transition duration-300">
+                <img src="{% static 'images/orange-money.jpg' %}" alt="TREMO-OM" class="w-full h-48 object-cover">
+                <div class="p-6 text-center">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">TREMO-OM</h3>
+                    <a href="https://wa.me/2250584030600?text=Bonjour%2C%20je%20souhaite%20faire%20une%20transaction%20tremo%20vers%20OM" 
+                       target="_blank" 
+                       class="inline-block w-16 h-16 bg-green-500 rounded-full shadow-lg hover:bg-green-600 transition duration-300">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-full h-full p-3">
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Carte TREMO-MTN -->
+            <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 hover:shadow-2xl transition duration-300">
+                <img src="{% static 'images/5-2.png' %}" alt="TREMO-MTN" class="w-full h-48 object-cover">
+                <div class="p-6 text-center">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">TREMO-MTN</h3>
+                    <a href="https://wa.me/2250584030600?text=Bonjour,%20je%20souhaite%20faire%20une%20transaction%20tremo%20vers%20MTN" 
+                       target="_blank" 
+                       class="inline-block w-16 h-16 bg-green-500 rounded-full shadow-lg hover:bg-green-600 transition duration-300">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-full h-full p-3">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="expert" class="py-12 bg-gray-200">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold">
+                <span class="text-blue-600">Autres</span> Services
+            </h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
+            <!-- Box 1 -->
+            <article class="bg-white rounded-lg shadow-md overflow-hidden hover-effect">
+                <img src="{% static 'images/tresormoney_1.png' %}" alt="Service de pré-inscription pour les concours" class="w-full h-48 object-cover">
+                <div class="p-4 text-center">
+                    <h3 class="text-lg font-semibold">Pré-inscription tremo</h3>
+                    <h3 class="text-sm text-gray-600">Frais de concours</h3>
+                    <a href="https://wa.me/2250584030600?text=Bonjour,%20je%20souhaite%20faire%20ma%20préinscription%20en%20ligne" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="inline-block mt-4 bg-green-500 text-white px-4 py-2 rounded-full shadow hover:bg-green-600 transition">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-6 h-6 inline mr-2">
+                        Contactez-nous 
+                    </a>
+                </div>
+            </article>
+    
+            <!-- Box 2 -->
+            <article class="bg-white rounded-lg shadow-md overflow-hidden hover-effect">
+                <img src="{% static 'images/1222572-page-de-destination-pour-economiser-de-l-argent-vectoriel.jpg' %}" alt="Investissement" class="w-full h-48 object-cover">
+                <div class="p-4 text-center">
+                    <h3 class="text-lg font-semibold">Investissement</h3>
+                    <a href="https://wa.me/2250584030600?text=Bonjour,%20je%20souhaite%20avoir%20des%20informations%20sur%20les%20investissements" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="inline-block mt-4 bg-green-500 text-white px-4 py-2 rounded-full shadow hover:bg-green-600 transition">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-6 h-6 inline mr-2">
+                        Contactez-nous 
+                    </a>
+                </div>
+            </article>
+    
+            <!-- Box 3 -->
+            <article class="bg-white rounded-lg shadow-md overflow-hidden hover-effect">
+                <img src="{% static 'images/S833dae0de538402da5f965f45aefc262f.jpg_640x640Q90.jpg_.webp' %}" alt="Location de vidéo-projecteur" class="w-full h-48 object-cover">
+                <div class="p-4 text-center">
+                    <h3 class="text-lg font-semibold">Location de vidéo-projecteur</h3>
+                    <a href="https://wa.me/2250584030600?text=Bonjour,%20je%20souhaite%20réserver%20un%20projecteur%20Smart" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="inline-block mt-4 bg-green-500 text-white px-4 py-2 rounded-full shadow hover:bg-green-600 transition">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-6 h-6 inline mr-2">
+                        Contactez-nous 
+                    </a>
+                </div>
+            </article>
+    
+            <!-- Box 4 -->
+            <article class="bg-white rounded-lg shadow-md overflow-hidden hover-effect">
+                <img src="{% static 'images/femme-conferenciere-se-produisant-scene-s-adressant-grand-public-professionnel-evenement_285885-5200.jpg' %}" alt="Conseil en Prise de parole" class="w-full h-48 object-cover">
+                <div class="p-4 text-center">
+                    <h3 class="text-lg font-semibold">Conseil en Prise de parole</h3>
+                    <a href="https://wa.me/2250584030600?text=Bonjour,%20je%20souhaite%20bénéficier%20de%20vos%20conseils%20en%20prise%20de%20parole" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="inline-block mt-4 bg-green-500 text-white px-4 py-2 rounded-full shadow hover:bg-green-600 transition">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-6 h-6 inline mr-2">
+                        Contactez-nous 
+                    </a>
+                </div>
+            </article>
+        </div>
+    </section>
+    
+    <!-- Section Témoignages -->
+    <section id="temoignage" class="py-12 bg-gray-100" class="pt-24">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold">Que Disent Nos <span class="text-blue-600">Clients</span></h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+            <!-- Témoignage 1 -->
+            <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                <img src="{% static 'images/6997662.png' %}" alt="" class="w-16 h-16 mx-auto rounded-full mb-4">
+                <p class="text-gray-600">Excellent service de retrait, très rapide et très convivial.</p>
+                <h3 class="mt-4 text-lg font-semibold">Murielle Abou</h3>
+            </div>
+    
+            <!-- Témoignage 2 -->
+            <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                <img src="{% static 'images/4139981.png' %}" alt="" class="w-16 h-16 mx-auto rounded-full mb-4">
+                <p class="text-gray-600">J'ai été satisfaite. J'apprécie votre disponibilité et votre polyvalence.</p>
+                <h3 class="mt-4 text-lg font-semibold">Moro Bitty</h3>
+            </div>
+    
+            <!-- Témoignage 3 -->
+            <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                <img src="{% static 'images/4323015.png' %}" alt="" class="w-16 h-16 mx-auto rounded-full mb-4">
+                <p class="text-gray-600">Bon, je dirais que c'est de la bonne qualité et c'est durable.</p>
+                <h3 class="mt-4 text-lg font-semibold">Othniel Jonam</h3>
+            </div>
+        </div>
+    </section>
+    
+     <section class="contact py-16 bg-white" id="contact" class="pt-24">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4"><span class="text-indigo-500">C</span>ontact</h2>
+                <p class="text-gray-600">N'hésitez pas à nous envoyer un message pour toute demande ou information.</p>
+            </div>
+            <form action="/" method="POST" class="bg-gray-100 shadow-md rounded-lg p-8 mt-8 max-w-xl mx-auto">
+                {% csrf_token %}
+                <h3 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-2">
+                    Envoyer un message
+                </h3>
+                {% for field in form %}
+                    <div class="mb-4">
+                        <label for="{{field.auto_id}}" class="block text-gray-700 font-medium mb-2">{{ field.label }}</label>
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                <button type="submit" class="bg-indigo-500 text-white font-medium py-3 px-6 rounded-lg hover:bg-indigo-600">
+                    Envoyer
+                </button>
+            </form>
+        </div>
+    </section>
+    <footer style="background-color:#f1f1f1; text-align:center; padding:20px; position:relative; bottom:0; width:100%;"> 
+        <div style="display:flex; justify-content:center; gap:20px; align-items:center;">
+          
+         <!-- Icône WhatsApp homogène -->
+        <a href="https://wa.me/2250584030600" target="_blank" title="WhatsApp">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:40px; height:40px; border-radius:50%; background-color:#25D366;">
+          </a>
+          <!-- Icône Facebook -->
+          <a href="https://www.facebook.com/share/18R41KR4Mk/" target="_blank" title="Facebook">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" style="width:40px; height:40px;">
+          </a>
+      
+          <!-- Icône LinkedIn -->
+          <a href="https://www.linkedin.com/in/mariam-cisse-289308262?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" title="LinkedIn">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn" style="width:40px; height:40px;">
+          </a>
+        
+        </div>
+        
+        <div class="copyright">
+          <p style="margin-top:10px; font-size:14px; color:#555;">© 2024 <a href="#">MyKoidjo</a> Mariam CISSE. Tous droits réservés.</p>
+        </div>
+      </footer>
+       </div>
+    {% endif %}
+    <script>
+        // Function to hide the success message and show the rest of the page
+        function hideSuccessMessage() {
+          document.getElementById("success-message").classList.add("hidden");
+          document.getElementById("page").classList.remove("hidden");
+        }
+      </script>
+ <script type="text/javascript">
+     window.addEventListener('scroll', function(){
+         const header =document.querySelector('header');
+         header.classList.toggle("sticky", window.scrollY > 0 );
+     });
+
+     function toggleMenu(){
+         const tmenuToggle = document.querySelector('.menuToggle');
+         const navbar = document.querySelector('.navbar');
+         navbar.classList.toggle('active');
+         menuToggle.classList.toggle('active');
+     }
+
+ </script>
+</body>
+</html>
