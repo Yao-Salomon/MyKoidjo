@@ -71,17 +71,6 @@
         </div>
     </div>
     <div id="page" class="hidden">
-    
-        <!-- JavaScript pour le menu hamburger -->
-        <script>
-            const menuToggle = document.getElementById('menuToggle');
-            const menu = document.getElementById('menu');
-    
-            menuToggle.addEventListener('click', () => {
-                menu.classList.toggle('hidden');
-            });
-            
-        </script>
         <section id="banniere" 
         class="relative bg-gray-200 py-20 text-center bg-[url('{% static 'images/JD-Mag-TV-Cote-dIvoire-INP-HB-Sortie-officielle-de-la-tenue-dApparat.jpg' %}')] bg-cover bg-center min-h-screen flex items-center justify-center">
     <!-- Superposition d'une couleur sombre avec une opacité réduite pour améliorer la visibilité de l'image -->
@@ -361,17 +350,6 @@
         </div>
     </div>
     <div id="page">
-
-        <!-- JavaScript pour le menu hamburger -->
-        <script>
-            const menuToggle = document.getElementById('menuToggle');
-            const menu = document.getElementById('menu');
-    
-            menuToggle.addEventListener('click', () => {
-                menu.classList.toggle('hidden');
-            });
-            
-        </script>
         <section id="banniere" 
         class="relative bg-gray-200 py-20 text-center bg-[url('{% static 'images/JD-Mag-TV-Cote-dIvoire-INP-HB-Sortie-officielle-de-la-tenue-dApparat.jpg' %}')] bg-cover bg-center min-h-screen flex items-center justify-center">
     <!-- Superposition d'une couleur sombre avec une opacité réduite pour améliorer la visibilité de l'image -->
@@ -556,6 +534,7 @@
                 <h2 class="text-4xl font-bold text-gray-800 mb-4"><span class="text-indigo-500">C</span>ontact</h2>
                 <p class="text-gray-600">N'hésitez pas à nous envoyer un message pour toute demande ou information.</p>
             </div>
+
             <form action="/" method="POST" class="bg-gray-100 shadow-md rounded-lg p-8 mt-8 max-w-xl mx-auto">
                 {% csrf_token %}
                 <h3 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-2">
@@ -598,6 +577,16 @@
       </footer>
        </div>
     {% endif %}
+    <!-- JavaScript pour le menu hamburger -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const menu = document.getElementById('menu');
+
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+        
+    </script>
     <script>
         // Function to hide the success message and show the rest of the page
         function hideSuccessMessage() {
